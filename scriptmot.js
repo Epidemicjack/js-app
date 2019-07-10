@@ -1,37 +1,27 @@
-// bouton clickable
-var button = document.querySelector('button');
-
-//Récupère le mot n*1
-var mot1 = prompt('Premier truc')
-var mot1 = i0;
-//Récupère le mot n*2
-var mot2 = prompt('Deuxième truc')
-var mot2 = i1;
-// stock le résultat
-var result;
-
-
-function checkForMissingInput(){
-        // vérifie que les champs ont bien été remplis
-
-}
-
-
-button onclick = function checker(){
-// Indique à l'utilisateur si les champs sont vides
-    if(checkForMissingInput(false)){
-            alert('Fais un effort mon pote')
-    } else {
-        writeResult("output1")
-    }
-    
-}
-
-
-   button onclick = function WriteResult(){
-    // écrit le résultat
-    console.log(i0+i1);
-    
-}
-
+function getdata(id) {
+    return document.getElementById(id).value;
+  }
+  
+  function checker(wordArray) {
+    // if any word in the word array is "" (empty), return false
+    if (wordArray.some(word => word.length === 0)) return false;
+    return true;
+  }
+  
+  function writeResult(result) {
+    // find textarea, write contents
+    document.getElementById("output1").textContent = result;
+  }
+  
+  // bouton clickable
+  const button = document.getElementById("submit");
+  button.onclick = function WriteResult() {
+    var mot1 = getdata('i0');
+    var mot2 = getdata('i1');
+    var words = [mot1, mot2];
+    if (checker(words)) {
+      writeResult(mot1 + mot2);
+    } else alert("Fais un effort mon pote")
+  }
+  
 
